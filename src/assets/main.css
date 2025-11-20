@@ -1,0 +1,91 @@
+/* Sidebar */
+
+.sidebar {
+  min-height: 100vh;
+  background: #0b1220;
+  color: #fff;
+}
+
+.nav-link {
+  color: #cbd5f5;
+  border-radius: 0.375rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.nav-link.active {
+  background: #1d283a;
+  color: #fff;
+}
+
+
+/* Signup Page */
+.signup-page {
+  background: #eef4ff;
+  min-height: 100vh;
+}
+
+.signup-card {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.service-multiselect-box {
+  cursor: pointer;
+  min-height: 42px;
+  background-color: #ffffff;
+}
+
+.service-multiselect-box .badge {
+  font-weight: 500;
+}
+
+.service-multiselect-menu {
+  /* position: absolute; */
+  z-index: 10;
+  width: 100%;
+  max-height: 180px;
+  overflow-y: auto;
+  border: 1px solid #e5e7eb;
+}
+
+.service-multiselect-menu::-webkit-scrollbar {
+  width: 6px;
+}
+.service-multiselect-menu::-webkit-scrollbar-thumb {
+  background: #cbd5f5;
+  border-radius: 999px;
+}
+
+
+
+
+/* login page */
+
+.login-page {
+  background: #eef4ff;
+  height: 100vh;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+/* dashboard page */
+
+.dashboard-card:hover {
+  transform: translateY(-3px);
+  transition: 0.25s ease;
+}
+
+.dashboard-card {
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+
