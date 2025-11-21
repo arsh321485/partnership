@@ -1,5 +1,6 @@
 import ForgotPasswordPage from '@/components/ForgotPasswordPage.vue'
 import LoginPage from '@/components/LoginPage.vue'
+import MainSigninPage from '@/components/MainSigninPage.vue'
 import SidebarPage from '@/components/SidebarPage.vue'
 import SignupPage from '@/components/SignupPage.vue'
 import DashboardView from '@/views/DashboardView.vue'
@@ -13,8 +14,14 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
 
-    {
+     {
       path: '/',
+      name: 'Signin',
+      component: MainSigninPage,
+    },
+
+    {
+      path: '/signup',
       name: 'signup',
       component: SignupPage,
     },

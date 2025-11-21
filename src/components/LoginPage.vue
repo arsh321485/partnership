@@ -65,7 +65,7 @@
 
                             <p class="text-center  text-muted mt-3">
                                 Don’t have a partner account?
-                                <router-link to="/" class="fw-semibold text-primary text-decoration-none">Create one →</router-link>
+                                <router-link to="/signup" class="fw-semibold text-primary text-decoration-none">Create one →</router-link>
                             </p>
 
                         </div>
