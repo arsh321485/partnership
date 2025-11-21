@@ -1,12 +1,13 @@
-import Login from '@/components/Login.vue'
-import Sidebar from '@/components/Sidebar.vue'
-import Signup from '@/components/Signup.vue'
+import ForgotPasswordPage from '@/components/ForgotPasswordPage.vue'
+import LoginPage from '@/components/LoginPage.vue'
+import SidebarPage from '@/components/SidebarPage.vue'
+import SignupPage from '@/components/SignupPage.vue'
 import DashboardView from '@/views/DashboardView.vue'
 import DealsView from '@/views/DealsView.vue'
 import LeadsView from '@/views/LeadsView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-// import HomeView from '../views/HomeView.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,19 +16,26 @@ const router = createRouter({
     {
       path: '/',
       name: 'signup',
-      component: Signup,
+      component: SignupPage,
     },
 
     {
       path: '/login',
       name: 'login',
-      component: Login,
+      component: LoginPage,
+    },
+
+    
+    {
+      path: '/forgot-password',
+      name: 'forgot-password',
+      component: ForgotPasswordPage,
     },
 
      {
       path: '/sidebar',
       name: 'sidebar',
-      component: Sidebar,
+      component: SidebarPage,
     },
 
 

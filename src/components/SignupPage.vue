@@ -8,7 +8,7 @@
 
                     <!-- LEFT IMAGE -->
                     <div
-                        class="col-12 col-md-6 p-0 d-none d-md-flex d-flex align-items-center justify-content-center bg-dark rounded-start-4">
+                        class="col-12 col-md-6 p-0 d-none d-md-flex d-flex align-items-center justify-content-center bg-dark rounded-start-4  left-image">
                         <img src="@/assets/images/signup-img.png"
                             class="img-fluid w-100 h-100 object-fit-cover rounded-start-4" alt="security" />
 
@@ -22,7 +22,7 @@
 
                             <h3 class="fw-bold mb-3 text-center">Sign up</h3>
 
-                            <form @submit.prevent="signup">
+                            <form>
 
                                 <div class="row g-2">
                                     <div class="col-6">
@@ -65,32 +65,20 @@
                                 <input type="url" placeholder="https://yourcompany.com" v-model="website"
                                     class="form-control  rounded-3" />
 
-                                <!-- <label class="form-label mt-2 mb-0">Services</label>
-                                <select v-model="service" class="form-select  rounded-3" required>
-                                    <option value="">Select Service</option>
-                                    <option value="SecureITLab Consulting Services">SecureITLab Consulting Services
-                                    </option>
-                                    <option value="SecureITLab Assurance Services">SecureITLab Assurance Services
-                                    </option>
-                                    <option value="SecureITLab Managed Services">SecureITLab Managed Services</option>
-                                    <option value="TestMyPlan">TestMyPlan</option>
-                                    <option value="VAPTFiX">VAPTFiX</option>
-                                    <option value="HI@WORK">HI@WORK</option>
-                                </select> -->
 
+
+                            
                                 <!-- SERVICES MULTISELECT -->
-                                <div class="mb-2 position-relative">
+                                <div class="mb-2 position-relative service-multiselect-container">
                                     <label class="form-label mt-2 mb-0">Services</label>
 
-                                    <!-- Fake input box that shows selected short codes -->
+                                    <!-- Fake input -->
                                     <div class="service-multiselect-box form-control rounded-3 d-flex align-items-center justify-content-between"
-                                        @click="toggleServiceDropdown">
+                                        @click.stop="toggleServiceDropdown">
                                         <div class="d-flex flex-wrap gap-1">
-                                            <span v-if="!selectedServices.length" class="text-muted small">
-                                                Select Services
-                                            </span>
+                                            <span v-if="!selectedServices.length" class="text-muted small">Select
+                                                Services</span>
 
-                                            <!-- Selected short codes as chips -->
                                             <span v-for="service in selectedServices" :key="service"
                                                 class="badge rounded-pill bg-light text-dark border small">
                                                 {{ serviceShortNames[service] }}
@@ -101,9 +89,8 @@
                                             :class="showServiceDropdown ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
                                     </div>
 
-                                    <!-- Dropdown menu with checkboxes -->
-                                    <div v-if="showServiceDropdown"
-                                        class="service-multiselect-menu shadow-sm rounded-3 mt-1 bg-white p-2"
+                                    <!-- DROPDOWN -->
+                                    <div v-show="showServiceDropdown" class="service-multiselect-menu shadow-sm p-2"
                                         @click.stop>
                                         <div v-for="opt in serviceOptions" :key="opt.value" class="form-check mb-1">
                                             <input class="form-check-input" type="checkbox" :id="'srv-' + opt.short"
@@ -116,9 +103,15 @@
                                 </div>
 
 
-                                <button class="btn btn-primary w-100 mt-4 py-2 rounded-3 fw-semibold" type="submit">
+
+
+
+                                <router-link to="/dashboard"
+                                    class="text-decoration-none fw-semibold btn btn-primary w-100 mt-4 py-2 rounded-3"
+                                    type="submit">
                                     Create Partner Account
-                                </button>
+                                </router-link>
+
                             </form>
 
 
@@ -145,12 +138,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { useRouter } from "vue-router";
-import { useAuthStore } from "../stores/authStore";
 
 export default defineComponent({
-    name: "Signup",
-
     data() {
         return {
             fname: "",
@@ -165,25 +154,14 @@ export default defineComponent({
             showServiceDropdown: false,
 
             serviceOptions: [
-                {
-                    value: "SecureITLab Consulting Services",
-                    label: "SecureITLab Consulting Services",
-                    short: "SCS",
-                },
-                {
-                    value: "SecureITLab Assurance Services",
-                    label: "SecureITLab Assurance Services",
-                    short: "SAS",
-                },
-                {
-                    value: "SecureITLab Managed Services",
-                    label: "SecureITLab Managed Services",
-                    short: "SMS",
-                },
+                { value: "SecureITLab Consulting Services", label: "SecureITLab Consulting Services", short: "SCS" },
+                { value: "SecureITLab Assurance Services", label: "SecureITLab Assurance Services", short: "SAS" },
+                { value: "SecureITLab Managed Services", label: "SecureITLab Managed Services", short: "SMS" },
                 { value: "TestMyPlan", label: "TestMyPlan", short: "TMP" },
                 { value: "VAPTFiX", label: "VAPTFiX", short: "VP" },
                 { value: "HI@WORK", label: "HI@WORK", short: "HW" },
             ],
+
             serviceShortNames: {
                 "SecureITLab Consulting Services": "SCS",
                 "SecureITLab Assurance Services": "SAS",
@@ -195,58 +173,20 @@ export default defineComponent({
         };
     },
 
-    setup() {
-        const router = useRouter();
-        const auth = useAuthStore();
-        return { router, auth };
-    },
-
     methods: {
-
         toggleServiceDropdown() {
             this.showServiceDropdown = !this.showServiceDropdown;
         },
-
-        closeServiceDropdownOnOutside(event: MouseEvent) {
-            const target = event.target as HTMLElement;
-            const box = this.$el.querySelector(".service-multiselect-box");
-            const menu = this.$el.querySelector(".service-multiselect-menu");
-
-            if (
-                box &&
-                menu &&
-                !box.contains(target) &&
-                !menu.contains(target)
-            ) {
-                this.showServiceDropdown = false;
-            }
+        handleClickOutside() {
+            this.showServiceDropdown = false;
         },
-        signup() {
-            const user = {
-                firstName: this.fname,
-                lastName: this.lname,
-                email: this.email,
-                password: this.password,
-                company: this.company,
-                website: this.website,
-                services: this.selectedServices,
-                serviceCodes: this.selectedServices.map(
-                    (s: string) => this.serviceShortNames[s] || s
-                ),
-            };
-
-            this.auth.signup(user);
-            this.router.push("/dashboard");
-        }
-
     },
 
     mounted() {
-        document.addEventListener("click", this.closeServiceDropdownOnOutside);
+        document.addEventListener("click", this.handleClickOutside);
     },
     beforeUnmount() {
-        document.removeEventListener("click", this.closeServiceDropdownOnOutside);
-    },
-
+        document.removeEventListener("click", this.handleClickOutside);
+    }
 });
 </script>

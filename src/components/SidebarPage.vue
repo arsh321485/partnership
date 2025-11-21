@@ -46,7 +46,7 @@
 
 <script lang="ts">
 export default {
-  name: "Sidebar",
+  name: "SidebarPage",
   data() {
     return {
       userName: localStorage.getItem("partnerName") || "John Doe",

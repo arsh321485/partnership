@@ -27,15 +27,15 @@
               </thead>
 
               <tbody>
-                <tr v-for="lead in leads" :key="lead.id">
-                  <td>{{ lead.code }}</td>
-                  <td>{{ lead.customer }}</td>
-                  <td>{{ lead.email }}</td>
-                  <td>{{ lead.company }}</td>
-                    <td>{{ lead.services }}</td>
-                      <td>{{ lead.products }}</td>
-                  <td><span class="badge status-badge status-active text-muted">{{ lead.status }}</span></td>
-                  <td><button class="btn btn-sm btn-outline-secondary">View</button></td>
+                <tr>
+                  <td>LD - 2025-050</td>
+                  <td>Tech Startup Inc.</td>
+                  <td>contact@techstartup.com</td>
+                  <td>Tech Startup Inc.</td>
+                    <td>Secureitlab consulting services</td>
+                      <td>ISO - 270001</td>
+                  <td><span class="badge status-badge status-active text-muted">New</span></td>
+                  <!-- <td><button class="btn btn-sm btn-outline-secondary">View</button></td> -->
                 </tr>
               </tbody>
             </table>
@@ -49,27 +49,12 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Sidebar from "../components/Sidebar.vue";
+import Sidebar from "../components/SidebarPage.vue";
 
 export default defineComponent({
   name: "LeadsView",
   components: { Sidebar },
-  setup() {
-    const leads = [
-      {
-        id: 1,
-        code: "LD-2025-050",
-        customer: "Tech Startup Inc.",
-        email: "contact@techstartup.com",
-        company: "Tech Startup Inc.",
-        services: "Secureitlab Consulting Services",
-        products: "Iso-270001",
-        status: "New",
-      
-      },
-    ];
-    return { leads };
-  }
+
 });
 </script>
 

@@ -22,7 +22,7 @@
 
                             <h3 class="fw-bold mb-3 text-center">Login</h3>
 
-                            <form @submit.prevent="submitLogin">
+                            <form >
 
                                 <label class="form-label">Business Email</label>
                                 <input type="email" v-model="email" class="form-control form-control-lg rounded-3 mb-2"
@@ -30,6 +30,7 @@
 
              
                                 <div class="mb-2 position-relative">
+                                     <label class="form-label">Password</label>
                                     <input :type="showPassword ? 'text' : 'password'" v-model="password"
                                         class="form-control form-control-lg rounded-3 pe-5" placeholder="••••••••"
                                         required />
@@ -37,8 +38,10 @@
                                     <!-- Eye Icon -->
                                     <i class="bi" :class="showPassword ? 'bi-eye-slash' : 'bi-eye'"
                                         @click="showPassword = !showPassword"
-                                        style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor:pointer; font-size: 1.2rem; color:#6b7280;"></i>
+                                        style="position: absolute; right: 15px; top: 67%; transform: translateY(-50%); cursor:pointer; font-size: 1.2rem; color:#6b7280;"></i>
                                 </div>
+
+                                <div class="d-flex justify-content-end"><router-link to="/forgot-password" class="text-primary text-decoration-none">Forgot Password ?</router-link></div>
 
 
                                 <div class="form-check mb-3">
@@ -48,9 +51,12 @@
                                     </label>
                                 </div>
 
-                                <button class="btn btn-primary w-100 py-2 rounded-3 fw-semibold" type="submit">
-                                    Login
-                                </button>
+                            
+
+                                
+                                 <router-link to="/dashboard" class="text-decoration-none fw-semibold btn btn-primary w-100 mt-4 py-2 rounded-3"  type="submit">
+                                   Login
+                                </router-link>
 
                                 <button class="btn btn-outline-secondary w-100 mt-3 py-2 rounded-3 fw-semibold">
                                     <i class="bi bi-google me-1"></i> Sign in with Google
@@ -74,10 +80,10 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { useAuthStore } from "../stores/authStore";
+
 
 export default defineComponent({
-    name: "Login",
+    name: "LoginPage",
 
     data() {
         return {
@@ -87,18 +93,6 @@ export default defineComponent({
         };
     },
 
-    methods: {
-        submitLogin() {
-            const auth = useAuthStore();
-            const loggedIn = auth.login(this.email, this.password);
-
-            if (!loggedIn) {
-                alert("Invalid credentials");
-                return;
-            }
-
-            this.$router.push("/dashboard");
-        },
-    },
+   
 });
 </script>

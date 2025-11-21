@@ -32,36 +32,27 @@
 
 .object-fit-cover {
   object-fit: cover;
+  
 }
 
-.service-multiselect-box {
-  cursor: pointer;
-  min-height: 42px;
-  background-color: #ffffff;
-}
 
-.service-multiselect-box .badge {
-  font-weight: 500;
+
+.service-multiselect-container {
+  position: relative;
 }
 
 .service-multiselect-menu {
   /* position: absolute; */
-  z-index: 10;
   width: 100%;
-  max-height: 180px;
-  overflow-y: auto;
+  top: 100%;
+  left: 0;
+  background: white;
+  border-radius: 10px;
   border: 1px solid #e5e7eb;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 9999;
 }
-
-.service-multiselect-menu::-webkit-scrollbar {
-  width: 6px;
-}
-.service-multiselect-menu::-webkit-scrollbar-thumb {
-  background: #cbd5f5;
-  border-radius: 999px;
-}
-
-
 
 
 /* login page */
@@ -87,5 +78,32 @@
   cursor: pointer;
   transition: 0.25s ease;
 }
+
+
+/* deals - register deal modal css */
+.modal-content {
+  background: #ffffff;
+}
+
+.form-control,
+.form-select {
+  height: 45px;
+  border: 1px solid #dce2eb;
+}
+
+.form-control:focus,
+.form-select:focus {
+  box-shadow: none;
+  border-color: #6c63ff;
+}
+
+.modal-header h4 {
+  color: #0b132b;
+}
+
+.modal-body label {
+  color: #36454f;
+}
+
 
 

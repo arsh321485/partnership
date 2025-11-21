@@ -13,8 +13,8 @@
             <div class="card p-3 mb-3">
               <div class="d-flex justify-content-between align-items-center mb-2">
                 <div>
-                  <div class="fw-semibold">{{ profile.company }}</div>
-                  <small class="text-muted">Partner Code: {{ profile.code }}</small>
+                  <div class="fw-semibold">Tech Solutions Inc.</div>
+                  <small class="text-muted">Partner Code: TS-2024-001</small>
                 </div>
                 <span class="badge status-badge status-active">Active · Gold</span>
               </div>
@@ -22,15 +22,15 @@
               <div class="row small">
                 <div class="col-md-6 mb-2">
                   <div class="text-muted">Website</div>
-                  <a :href="profile.website" target="_blank">{{ profile.website }}</a>
+                  <a href="" target="_blank">https://techsolutions.com</a>
                 </div>
                 <div class="col-md-6 mb-2">
                   <div class="text-muted">Industry</div>
-                  {{ profile.industry }}
+                 Technology
                 </div>
                 <div class="col-md-6 mb-2">
                   <div class="text-muted">Primary Contact</div>
-                  {{ profile.contact }}
+                 Ritika Bhikonde . ritu@gmail.com
                 </div>
               </div>
             </div>
@@ -59,26 +59,14 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Sidebar from "../components/Sidebar.vue";
-import { useAuthStore } from "../stores/authStore";
+import Sidebar from "../components/SidebarPage.vue";
+
 
 export default defineComponent({
   name: "ProfileView",
   components: { Sidebar },
 
-  setup() {
-    const auth = useAuthStore();
 
-    const profile = {
-      company: auth.session?.company || "Company",
-      code: "TS-2024-001",
-      website: auth.session?.website || "https://example.com",
-      industry: "Technology",
-      contact: `${auth.session?.firstName} ${auth.session?.lastName} · ${auth.session?.email}`,
-    };
-
-    return { profile };
-  }
 });
 </script>
 
