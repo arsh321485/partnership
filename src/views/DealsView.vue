@@ -150,7 +150,7 @@
                   </div>
 
                   <div class="col-md-12">
-                    <label class="form-label fw-semibold small">Notes</label>
+                    <label class="form-label fw-semibold small">Scope</label>
                     <textarea class="form-control rounded-3" rows="3"
                       placeholder="Any billing terms, exclusivity details, etc."></textarea>
                   </div>

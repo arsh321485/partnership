@@ -52,8 +52,10 @@ export default {
       userName: localStorage.getItem("partnerName") || "John Doe",
       navItems: [
         { name: "Dashboard", to: "/dashboard", icon: "bi bi-speedometer2" },
-        { name: "Deals", to: "/deals", icon: "bi bi-briefcase" },
         { name: "Leads", to: "/leads", icon: "bi bi-people" },
+        { name: "Deals", to: "/deals", icon: "bi bi-briefcase" },
+        { name: "Proposal", to: "/proposal", icon: "bi-file-earmark-text" },
+        { name: "Projects", to: "/projects", icon: "bi-kanban" },
         { name: "Partner Profile", to: "/profile", icon: "bi bi-building" },
       ],
     };

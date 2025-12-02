@@ -7,6 +7,7 @@ import DashboardView from '@/views/DashboardView.vue'
 import DealsView from '@/views/DealsView.vue'
 import LeadsView from '@/views/LeadsView.vue'
 import ProfileView from '@/views/ProfileView.vue'
+import ProposalView from '@/views/ProposalView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 
@@ -63,6 +64,12 @@ const router = createRouter({
       path: '/leads',
       name: 'leads',
       component: LeadsView,
+    },
+
+       {
+      path: '/proposal',
+      name: 'proposal',
+      component: ProposalView,
     },
 
     {
